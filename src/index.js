@@ -6,7 +6,10 @@ app.get('/oauth/authorize', (req, res) => {
   res.redirect(302, 'http://localhost:8090/oauth/authorize?:')
 })
 
+app.get('/oauth/callback', (req, res) => {
+  res.redirect(302, 'http://localhost:8090/oauth/authorize?:')
+})
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`)
 })
-
