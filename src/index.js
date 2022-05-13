@@ -24,7 +24,6 @@ const sign = async (accessToken, message) => {
 }
 
 app.get('/oauth/authorize', (req, res) => {
-  console.log(oauthApplication)
   res.redirect(302, `${oauthApplication.authorize_uri}?response_type=code`
                                                    + `&client_id=${oauthClientId}`
                                                    + `&redirect_uri=${oauthApplication.callback_uri}`
