@@ -25,14 +25,13 @@ const sign = async (accessToken, message) => {
 }
 
 app.get('/oauth/authorize', (req, res) => {
-  console.log(oauthApplication)
   res.redirect(302, `${oauthApplication.authorizeUri}?response_type=code`
-                                                   + `&client_id=${oauthClientId}`
-                                                   + `&redirect_uri=${oauthApplication.callbackUri}`
-                                                   + `&scope=${req.query?.scope}`
-                                                   + `&state=${req.query?.state}`
-                                                   + `&code_challenge=${req.query?.code_challenge}`
-                                                   + `&code_challenge_method=${req.query?.code_challenge_method}`
+                                                  + `&client_id=${oauthClientId}`
+                                                  + `&redirect_uri=${oauthApplication.callbackUri}`
+                                                  + `&scope=${req.query?.scope}`
+                                                  + `&state=${req.query?.state}`
+                                                  + `&code_challenge=${req.query?.code_challenge}`
+                                                  + `&code_challenge_method=${req.query?.code_challenge_method}`
   )
 })
 

@@ -20,3 +20,12 @@ OAuth Backend Example
   }
 }
 ```
+
+A single-page application should redirect the user to the following URL:
+
+```
+http://localhost:8090/oauth/authorize?client_id=<OAuth client_id>
+                                     &scope=key.sign
+                                     &grant_type=authorization_code
+                                     &redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Foauth%2Fcallback
+```
