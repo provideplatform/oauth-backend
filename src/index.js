@@ -49,8 +49,7 @@ app.get('/oauth/callback', async (req, res) => {
       state: req.query?.state,
     })
 
-    // const raw = JSON.stringify(token, null, 2)
-    res.status(201).json({
+    res.status(200).json({
       access_token: token.accessToken,
       refresh_token: token.refreshToken,
       expires_in: token.expiresIn,
