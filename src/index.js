@@ -18,9 +18,10 @@ const fetchApplication = async () => {
 // sign on behalf of the authorized user...
 const sign = async (accessToken, message) => {
   // FIXME-- parse access token... read vault and key ids from scope...
-  var vaultId, keyId
+  var vaultId
+  var keyId
   const vault = vaultClientFactory(accessToken)
-  return await vault.signMessage(vaultId, keyId, message)
+  return vault.signMessage(vaultId, keyId, message)
 }
 
 app.get('/oauth/authorize', (req, res) => {
@@ -49,10 +50,25 @@ app.get('/oauth/callback', async (req, res) => {
       state: req.query?.state,
     })
 
-    res.status(201).send(JSON.stringify(token))
+    // const raw = JSON.stringify(token, null, 2)
+    res.status(201).json({
+      access_token: token.accessToken,
+      refresh_token: token.refreshToken,
+      expires_in: token.expiresIn,
+      scope: token.scope,
+      state: token.state,
+      token_type: 'bearer',
+    })
   } catch (e) {
     res.status(400)
   }
+})
+
+app.post('/sign', async (req, res) => {
+  // FIXME-- read message to sign from state param...
+  // const resp = await sign(token.accessToken, 'hello')
+  // res.status(201).send(JSON.stringify(resp))
+  res.status(501)
 })
 
 setTimeout(async () => {
