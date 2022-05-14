@@ -8,9 +8,9 @@ const apiAccessToken = process.env['PRVD_API_ACCESS_TOKEN']
 const oauthClientId = process.env['PRVD_OAUTH_CLIENT_ID']
 const oauthClientSecret = process.env['PRVD_OAUTH_CLIENT_SECRET']
 
-var oauthApplication // this is the Opschain OAuth application
+var oauthApplication // your branded OAuth application
 
-// fetch the OAuth application details from Ident...
+// fetch the public OAuth application details from Ident...
 const fetchApplication = async () => {
   return Ident.fetchOAuthApplicationDetails(oauthClientId)
 }
